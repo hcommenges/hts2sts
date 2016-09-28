@@ -10,7 +10,7 @@ GNU AFFERO GENERAL PUBLIC LICENSE v3
 
 ## User guide
 
-Input tables:
+### Input tables
 
 - `table of trips` with with the following fields (the order matters, the name does not):
 
@@ -25,6 +25,7 @@ Input tables:
 9. Purpose at destination (code or name)
 10. Transport mode (code or name)
 
+
 - `table of individuals` with with the following fields (the order matters, the name does not):
 
 1. Individual ID (join key with the table of trips)
@@ -32,6 +33,7 @@ Input tables:
 
 **IMPORTANT: correspondance between both tables is required, i.e. no individual without trip and no trip without individual**
 
-- Output table:
+
+### Output table
 
 - a character matrix corresponding to `TraMineR` SPS format. This table can be used directly with the `seqdef()` function.
