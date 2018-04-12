@@ -129,6 +129,10 @@ PrepareTimeVariables <- function(X, Y){
   
   Y <- semi_join(x = Y, y = horaryIncon, by = "NUMIND")
   X <- semi_join(x = X, y = Y, by = "NUMIND")
+  X <- X %>% arrange(NUMIND, START)
+  Y <- Y %>% arrange(NUMIND)
+
+  ifelse(identical(unique(X$NUMIND), Y$NUMIND), print("OK"), print("Problem"))
   
   return(list(trp = X, ind = Y))
 }
@@ -141,6 +145,7 @@ CreateMatSPS <- function(X){
   maxLength <- max(sapply(listSeq, length))
   listMatSps <- lapply(listSeq, VectorToMatrix, maxlength = maxLength)
   matSps <- do.call(what = "rbind", listMatSps)
+  row.names(matSps) <- unique(X$NUMIND)
   return(matSps)
 }
 
